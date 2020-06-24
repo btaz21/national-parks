@@ -5,7 +5,10 @@ const parksSchema = new mongoose.Schema({
     image: String,
     location: String,
     description: String,
-    priority: String,
+    weather:String,
+    directions:String,
+    cost:String,
+    priority:String,
     visited: {type: Boolean, default: false},
     note: String
 });

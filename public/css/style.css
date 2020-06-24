@@ -388,6 +388,10 @@ input[type=radio], input[type=checkbox] {
   margin-top: 40px;
 }
 
+.options {
+  text-align: center;
+}
+
 /* About page  */
 
 .about-page {

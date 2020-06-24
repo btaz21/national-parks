@@ -27,6 +27,21 @@ app.controller('RJBController', ['$http', function($http){
   }
 
 
+  //API CALL
+  this.apiCall = function () {
+    $http(
+      {
+        method:'GET',
+        url: 'https://developer.nps.gov/api/v1/parks?&api_key=OEVp6NVtd60AJNcfRWAI2ngmfG6gXfMMNh0GKc3N'
+      }
+    ).then(
+      function (response) {
+        controller.apiData = response.data.data
+        console.log(response.data.data);
+      }
+    )
+  }
+
 
 
   // delete a parks
@@ -63,9 +78,16 @@ app.controller('RJBController', ['$http', function($http){
       {
         url:'/parks',
         method:'POST',
-        data: this.createForm
+        data: {
+          name: this.createForm.name,
+          location: this.createForm.states,
+          image: this.createForm.images[0].url,
+          description: this.createForm.description,
+          weather: this.createForm.weatherInfo,
+          cost: this.createForm.entranceFees[0].cost,
+          directions: this.createForm.directionsInfo
       }
-    ).then(
+    }).then(
       function (response) {
         controller.createForm = {};
         controller.getParks();

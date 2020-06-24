@@ -3,15 +3,23 @@
   <div class="form-image"></div>
   <div class="form-content">
     <h1>ADD A PARK TO YOUR LIST</h1>
+    <button ng-click="ctrl.apiCall()">Api Call</button>
     <form ng-submit="ctrl.createPark()">
       <fieldset>
         <legend>Park Details</legend>
+        <h1>Choose A Park</h1>
+        <div class="options">
+          <select ng-options="park as park.fullName for park in ctrl.apiData" ng-model="ctrl.createForm">
+            <option ></option>
+          </select>
+        </div>
+        <h1>OR Add Your Own</h1>
         <!-- <label for="name">Park Name</label> -->
         <input ng-model="ctrl.createForm.name" type="text" id="name" placeholder="Park Name">
         <!-- <label for="image">Image</label> -->
-        <input ng-model="ctrl.createForm.image" type="text" id="image" placeholder="Image Link">
+        <input ng-model="ctrl.createForm.images[0].url" type="text" id="image" placeholder="Image Link">
         <!-- <label for="location">Location</label> -->
-        <input ng-model="ctrl.createForm.location" type="text" id="location" placeholder="Location">
+        <input ng-model="ctrl.createForm.states" type="text" id="location" placeholder="Location">
         <!-- <label for="description">Description</label> -->
         <textarea ng-model="ctrl.createForm.description" id="description" placeholder="Description"></textarea>
       </fieldset>

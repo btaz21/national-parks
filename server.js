@@ -6,15 +6,15 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const db = mongoose.connection
 require('dotenv').config()
-const PROJECT3_DB  = process.env.PROJECT3_DB
-const PORT = process.env.PORT
+// const PROJECT3_DB  = process.env.PROJECT3_DB
+// const PORT = process.env.PORT
 
 //~~~~~~~~DB Config~~~~~~~~~~//
 
-mongoose.connect(PROJECT3_DB,  { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.connect('mongodb://localhost:27017/nationalparks',  { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true, useCreateIndex: true });
 
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', PROJECT3_DB));
+db.on('connected', () => console.log('mongo connected: ', 'mongodb://localhost:27017/nationalparks'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 //~~~~~~~~~Middleware~~~~~~~~~//
@@ -41,6 +41,6 @@ app.use('/parks', parksController)
 
 //~~~~~~~~~Listener~~~~~~~~~//
 
-app.listen(PORT, () => {
-  console.log('listening to ariana grande...');
+app.listen(3005, () => {
+  console.log('listening...');
 })
